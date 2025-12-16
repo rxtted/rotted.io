@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;700&family=Press+Start+2P&display=swap');
+
+:root {
+  /* Foundation - The Void */
+  --void-absolute: #0C0D0C;
+  --void-deep: #171616;
+  --foundation-charcoal: #2B2B2A;
+
+  /* Weathered Stone */
+  --stone-dark: #362A25;
+  --gray-weathered: #635A53;
+  --gray-ash: #5E5A56;
+  --gray-silver: #939393;
+  --remnant-pale: #D9D7D7;
+
+  /* The Rot */
+  --rot-primary: #DE3D17;
+  --rot-blood: #DC3B17;
+  --rot-burning: #E03E1E;
+
+  /* Terminal Colors */
+  --terminal-green: #00FF00;
+  --terminal-amber: #FFAA00;
+  --cyan-data: #00FFFF;
+  --matrix-green: #00AA00;
+  --electric-blue: #0088FF;
+
+  /* Effects */
+  --shadow-harsh: 4px 4px 0px var(--void-absolute);
+  --shadow-deep: 0 8px 0px rgba(0, 0, 0, 0.8);
+  --border-rough: 2px solid var(--gray-weathered);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  background: var(--void-absolute);
+  color: var(--remnant-pale);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Noise texture utility */
+.textured-surface {
+  position: relative;
+}
+
+.textured-surface::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,.1) 2px,
+      rgba(0,0,0,.1) 4px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Scanline effect */
+.scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 0, 0.03) 2px,
+    rgba(0, 255, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  animation: scan 8s linear infinite;
+  z-index: 10;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* No smooth transitions - only harsh, stepped */
+* {
+  transition: none !important;
+}

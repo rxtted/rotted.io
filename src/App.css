@@ -1,0 +1,331 @@
+/* Terminal Container */
+.terminal-container {
+  min-height: 100vh;
+  background: var(--void-absolute);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Content Grid - Asymmetric Layout */
+.content-grid {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Terminal Header */
+.terminal-header {
+  background: var(--void-deep);
+  border: 2px solid var(--gray-weathered);
+  border-bottom: none;
+  padding: 12px 20px;
+}
+
+.header-bar {
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  color: var(--terminal-green);
+  letter-spacing: 2px;
+}
+
+.prompt {
+  color: var(--rot-primary);
+  font-weight: bold;
+}
+
+.cursor {
+  display: inline-block;
+  background: var(--terminal-green);
+  color: var(--void-absolute);
+  padding: 0 4px;
+  margin-left: 8px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Main Content */
+.main-content {
+  background: var(--foundation-charcoal);
+  border-left: 2px solid var(--gray-weathered);
+  border-right: 2px solid var(--gray-weathered);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+}
+
+/* Logo Section */
+.logo-section {
+  margin-bottom: 40px;
+}
+
+.logo-wrapper {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  padding: 30px;
+  background: var(--void-deep);
+  border: 2px solid var(--terminal-green);
+  box-shadow:
+    0 0 20px rgba(0, 255, 0, 0.15),
+    inset 0 0 40px rgba(0, 255, 0, 0.05);
+}
+
+/* Terminal CRT overlay */
+.logo-crt-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Scanlines over logo */
+.logo-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 0, 0.05) 2px,
+    rgba(0, 255, 0, 0.05) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+  animation: scan-slow 12s linear infinite;
+}
+
+@keyframes scan-slow {
+  0% { transform: translateY(-10%); }
+  100% { transform: translateY(10%); }
+}
+
+.banner-logo {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 1;
+  filter:
+    contrast(1.4)
+    brightness(0.85)
+    saturate(0.7)
+    drop-shadow(0 0 8px rgba(0, 255, 0, 0.3))
+    drop-shadow(4px 4px 0px var(--void-absolute));
+  image-rendering: crisp-edges;
+  animation: terminal-flicker 0.15s infinite, subtle-glitch 8s infinite;
+}
+
+/* Terminal screen flicker */
+@keyframes terminal-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.97; }
+}
+
+/* Occasional glitch effect */
+@keyframes subtle-glitch {
+  0%, 94%, 100% {
+    transform: translate(0);
+  }
+  95% {
+    transform: translate(-2px, 1px);
+    filter:
+      contrast(1.4)
+      brightness(0.85)
+      saturate(0.7)
+      hue-rotate(90deg)
+      drop-shadow(0 0 8px rgba(255, 0, 0, 0.5));
+  }
+  96% {
+    transform: translate(2px, -1px);
+    filter:
+      contrast(1.4)
+      brightness(0.85)
+      saturate(0.7)
+      hue-rotate(180deg)
+      drop-shadow(0 0 8px rgba(0, 255, 255, 0.5));
+  }
+  97% {
+    transform: translate(-1px, -1px);
+  }
+}
+
+.status-line {
+  font-family: 'VT323', monospace;
+  font-size: 24px;
+  color: var(--gray-weathered);
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.bracket {
+  color: var(--terminal-green);
+}
+
+.status-text {
+  color: var(--gray-silver);
+  margin: 0 8px;
+}
+
+/* Info Panel */
+.info-panel {
+  border: 2px solid var(--gray-weathered);
+  background: var(--void-deep);
+  margin-left: auto;
+  max-width: 600px;
+  position: relative;
+  box-shadow: var(--shadow-deep);
+}
+
+.panel-border {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: 15px;
+  bottom: 15px;
+  border: 1px solid var(--gray-ash);
+  pointer-events: none;
+}
+
+.panel-content {
+  padding: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.manifesto-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--remnant-pale);
+  margin: 0 0 30px 0;
+  border-left: 3px solid var(--rot-primary);
+  padding-left: 20px;
+}
+
+/* System Status */
+.system-status {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.status-item {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: 1px;
+}
+
+.indicator {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+.indicator.active {
+  color: var(--terminal-green);
+  text-shadow: 0 0 8px var(--terminal-green);
+  animation: pulse 2s infinite;
+}
+
+.indicator.building {
+  color: var(--terminal-amber);
+  text-shadow: 0 0 8px var(--terminal-amber);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.status-item .label {
+  color: var(--gray-silver);
+  flex: 1;
+}
+
+.status-item .value {
+  color: var(--terminal-green);
+  font-weight: bold;
+}
+
+.status-item .value:has(.indicator.building) {
+  color: var(--terminal-amber);
+}
+
+/* Terminal Footer */
+.terminal-footer {
+  background: var(--void-deep);
+  border: 2px solid var(--gray-weathered);
+  border-top: none;
+  padding: 12px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-noise {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,.03) 2px,
+      rgba(255,255,255,.03) 4px
+    );
+  pointer-events: none;
+}
+
+.footer-text {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  color: var(--gray-weathered);
+  letter-spacing: 4px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 20px;
+    gap: 30px;
+  }
+
+  .logo-wrapper {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .status-line {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .info-panel {
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
