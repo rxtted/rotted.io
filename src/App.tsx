@@ -14,7 +14,7 @@ type StatusTextConfig =
 // Add as many status texts as you want here
 const STATUS_TEXTS: StatusTextConfig[] = [
   'This space is mine.',
-  { text: 'You cannot sanitize this.', useWordDiff: true },
+  'You cannot sanitize this.',
   { text: 'You cannot monetize this.', useWordDiff: true },
   'More coming soon.'
   // Add more texts here - they'll automatically cycle
@@ -95,7 +95,7 @@ function App() {
     useWordDiff: boolean = false,
     onComplete?: () => void
   ) => {
-    // Full-sentence mode (original behavior)
+    // Full-sentence mode - instant scramble, then character-by-character decode
     if (!useWordDiff) {
       setIsDeconstructing(true)
 
@@ -104,17 +104,13 @@ function App() {
 
       const deconstructInterval = setInterval(() => {
         setDisplayText(() => {
+          // Scramble all characters at once
           return fromText.split('')
-            .map((char, index) => {
-              if (index >= fromText.length - deconstructIteration) {
-                return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]
-              }
-              return char
-            })
+            .map(() => GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)])
             .join('')
         })
 
-        deconstructIteration += 1 / 3
+        deconstructIteration += 1.5  // Slower scramble - still quick but not rushed
 
         if (deconstructIteration >= deconstructLength) {
           clearInterval(deconstructInterval)
