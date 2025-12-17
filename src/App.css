@@ -134,15 +134,14 @@
   }
 }
 
-/* Digital static/noise - CONSTANT */
+/* Digital static/noise */
 .logo-static {
   position: absolute;
   inset: 0;
   background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=');
-  opacity: 0.2;
+  opacity: 0.15;
   pointer-events: none;
   z-index: 6;
-  animation: static-constant 0.08s infinite steps(4);
   mix-blend-mode: overlay;
 }
 
@@ -154,7 +153,7 @@
   100% { opacity: 0.2; }
 }
 
-/* Corruption overlay - CONSTANT digital decay */
+/* Corruption overlay - digital decay */
 .logo-corruption-overlay {
   position: absolute;
   inset: 0;
@@ -163,10 +162,9 @@
     linear-gradient(0deg, transparent 0%, var(--rot-burning) 50%, transparent 51%);
   background-size: 3px 100%, 100% 2px;
   background-position: 0 0;
-  opacity: 0.25;
+  opacity: 0.2;
   pointer-events: none;
   z-index: 9;
-  animation: corruption-constant 0.15s infinite steps(3);
   mix-blend-mode: hard-light;
 }
 
@@ -213,7 +211,6 @@
     saturate(0.6)
     drop-shadow(0 0 8px rgba(222, 61, 23, 0.5));
   animation:
-    intense-flicker 0.1s infinite,
     logo-distort 7.3s infinite steps(20);
 }
 
