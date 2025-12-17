@@ -75,7 +75,7 @@ function App() {
             </div>
             <div className="status-line">
               <span className="bracket">[</span>
-              <span className="status-text">DIGITAL SOVEREIGNTY</span>
+              <span className="status-text">CORPORATE SOVEREIGNTY</span>
               <span className="bracket">]</span>
             </div>
           </div>
@@ -84,9 +84,9 @@ function App() {
             <div className="panel-border"></div>
             <div className="panel-content">
               <p className="manifesto-text">
-                &gt; RECLAIMING DIGITAL TERRITORY<br/>
-                &gt; SELF-HOSTED. UNMONETIZED. UNOPTIMIZED.<br/>
-                &gt; THIS SPACE IS MINE.
+                &gt; RECLAIMING DIGITAL FREEDOM<br/>
+                &gt; SELF-HOSTED. UNMONETIZED. UNSANITIZED.<br/>
+                &gt; ETERNAL FREEDOM.
               </p>
 
               <div className="system-status">
@@ -112,7 +112,7 @@ function App() {
 
         <footer className="terminal-footer">
           <div className="footer-noise"></div>
-          <span className="footer-text">@rxtted</span>
+          <span className="footer-text"></span>
         </footer>
       </div>
     </div>
