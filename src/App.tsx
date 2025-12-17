@@ -84,6 +84,8 @@ function App() {
   })
   const [isDeconstructing, setIsDeconstructing] = useState(false)
   const [isDecoding, setIsDecoding] = useState(true)
+  const [displayTokens, setDisplayTokens] = useState<Array<{text: string, isAnimating: boolean}>>([])
+  const [useTokenDisplay, setUseTokenDisplay] = useState(false)
   const timeoutsRef = useRef<NodeJS.Timeout[]>([])
   const currentIndexRef = useRef(0)
 
@@ -157,7 +159,15 @@ function App() {
     // Word-diff mode (new behavior)
     const { fromTokens, toTokens } = computeWordDiff(fromText, toText)
 
+    // Enable token display mode
+    setUseTokenDisplay(true)
     setIsDeconstructing(true)
+
+    // Initialize display tokens
+    setDisplayTokens(fromTokens.map(token => ({
+      text: token.text,
+      isAnimating: token.changed
+    })))
 
     // Phase 1: Deconstruct changed tokens
     const changedFromTokens = fromTokens.filter(t => t.changed)
@@ -165,18 +175,20 @@ function App() {
 
     let deconstructIteration = 0
     const deconstructInterval = setInterval(() => {
-      setDisplayText(() => {
-        return fromTokens.map(token => {
-          if (!token.changed) return token.text
+      setDisplayTokens(fromTokens.map(token => {
+        if (!token.changed) {
+          return { text: token.text, isAnimating: false }
+        }
 
-          return token.text.split('').map((char, idx) => {
-            if (idx >= token.text.length - deconstructIteration) {
-              return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]
-            }
-            return char
-          }).join('')
+        const scrambledText = token.text.split('').map((char, idx) => {
+          if (idx >= token.text.length - deconstructIteration) {
+            return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]
+          }
+          return char
         }).join('')
-      })
+
+        return { text: scrambledText, isAnimating: true }
+      }))
 
       deconstructIteration += 1 / 3
 
@@ -193,23 +205,32 @@ function App() {
 
           let decodeIteration = 0
           const decodeInterval = setInterval(() => {
-            setDisplayText(() => {
-              return toTokens.map(token => {
-                if (!token.changed) return token.text
+            setDisplayTokens(toTokens.map(token => {
+              if (!token.changed) {
+                return { text: token.text, isAnimating: false }
+              }
 
-                return token.text.split('').map((char, idx) => {
-                  if (idx < decodeIteration) return char
-                  return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]
-                }).join('')
+              const decodedText = token.text.split('').map((char, idx) => {
+                if (idx < decodeIteration) return char
+                return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]
               }).join('')
-            })
+
+              return { text: decodedText, isAnimating: true }
+            }))
 
             decodeIteration += 1 / 3
 
             if (decodeIteration >= maxDecodeLength) {
               clearInterval(decodeInterval)
-              setDisplayText(toText)
               setIsDecoding(false)
+
+              // Finalize and disable token display mode
+              setDisplayTokens(toTokens.map(token => ({
+                text: token.text,
+                isAnimating: false
+              })))
+              setUseTokenDisplay(false)
+              setDisplayText(toText)
 
               if (onComplete) {
                 onComplete()
@@ -270,7 +291,7 @@ function App() {
                 scheduleNextTransition()
               }
             )
-          }, 4000)
+          }, 1000)
 
           timeoutsRef.current.push(timeout)
         }
@@ -349,7 +370,22 @@ function App() {
 
         <div className="status-line">
           <span className="bracket">[</span>
-          <span className={`status-text ${isDeconstructing ? 'decoding' : ''} ${isDecoding ? 'decoding' : ''}`}>{displayText}</span>
+          <span className="status-text-wrapper">
+            {useTokenDisplay ? (
+              displayTokens.map((token, idx) => (
+                <span
+                  key={idx}
+                  className={`status-token${token.isAnimating && (isDeconstructing || isDecoding) ? ' decoding' : ''}`}
+                >
+                  {token.text}
+                </span>
+              ))
+            ) : (
+              <span className={`status-text-content${isDeconstructing || isDecoding ? ' decoding' : ''}`}>
+                {displayText}
+              </span>
+            )}
+          </span>
           <span className="bracket">]</span>
         </div>
       </div>

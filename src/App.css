@@ -854,6 +854,40 @@
   animation: decode-flicker 0.1s infinite;
 }
 
+/* Token-based rendering for word-diff transitions */
+.status-text-wrapper {
+  margin: 0 8px;
+  display: inline-block;
+}
+
+.status-token {
+  color: var(--gray-silver);
+  position: relative;
+  display: inline;
+}
+
+.status-token.decoding {
+  text-shadow:
+    -2px 0 var(--rot-primary),
+    2px 0 var(--terminal-green),
+    0 0 10px rgba(222, 61, 23, 0.5);
+  animation: decode-flicker 0.1s infinite;
+}
+
+.status-text-content {
+  color: var(--gray-silver);
+  position: relative;
+  display: inline;
+}
+
+.status-text-content.decoding {
+  text-shadow:
+    -2px 0 var(--rot-primary),
+    2px 0 var(--terminal-green),
+    0 0 10px rgba(222, 61, 23, 0.5);
+  animation: decode-flicker 0.1s infinite;
+}
+
 @keyframes decode-flicker {
   0%, 100% {
     opacity: 1;
