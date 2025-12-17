@@ -18,11 +18,60 @@ function App() {
             <div className="logo-wrapper">
               <div className="logo-scanlines"></div>
               <div className="logo-crt-overlay"></div>
-              <img
-                src="/bannerlogo.svg"
-                alt="ROTTED.IO"
-                className="banner-logo"
-              />
+              <div className="logo-static"></div>
+              <div className="logo-corruption-overlay"></div>
+
+              {/* Multi-layer glitch system */}
+              <div className="logo-glitch-container">
+                {/* Chromatic layers - always offset */}
+                <img
+                  src="/bannerlogo.svg"
+                  alt=""
+                  className="banner-logo banner-logo-red"
+                  aria-hidden="true"
+                />
+                <img
+                  src="/bannerlogo.svg"
+                  alt=""
+                  className="banner-logo banner-logo-cyan"
+                  aria-hidden="true"
+                />
+
+                {/* Sliced glitch layers - pixel displacement */}
+                <img
+                  src="/bannerlogo.svg"
+                  alt=""
+                  className="banner-logo banner-logo-slice-1"
+                  aria-hidden="true"
+                />
+                <img
+                  src="/bannerlogo.svg"
+                  alt=""
+                  className="banner-logo banner-logo-slice-2"
+                  aria-hidden="true"
+                />
+                <img
+                  src="/bannerlogo.svg"
+                  alt=""
+                  className="banner-logo banner-logo-slice-3"
+                  aria-hidden="true"
+                />
+                <img
+                  src="/bannerlogo.svg"
+                  alt=""
+                  className="banner-logo banner-logo-slice-4"
+                  aria-hidden="true"
+                />
+
+                {/* Main layer */}
+                <img
+                  src="/bannerlogo.svg"
+                  alt="ROTTED.IO"
+                  className="banner-logo banner-logo-main"
+                />
+              </div>
+
+              <div className="decay-particles"></div>
             </div>
             <div className="status-line">
               <span className="bracket">[</span>
