@@ -3,10 +3,10 @@
    Cyber-Decay Hybrid Design
    =================================== */
 
-/* Terminal Container */
+/* Terminal Container - with logo background effects */
 .terminal-container {
   min-height: 100vh;
-  background: var(--foundation-charcoal);
+  background: var(--void-deep);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -342,48 +342,37 @@
 
 /* ===== CENTERED LOGO AT INTERSECTION ===== */
 
-.logo-section-diagonal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* Logo section - centered */
+.logo-section {
+  position: relative;
   max-width: 650px;
   width: 85%;
   z-index: 10;
 }
 
-/* Logo wrapper - RED primary with subtle terminal green accent */
-.diagonal-split-layout .logo-wrapper {
-  position: relative;
-  padding: 30px;
-  background: var(--void-deep);
-  border: 3px solid var(--rot-primary);
-  outline: 1px solid var(--terminal-green);
-  outline-offset: -6px;
-  box-shadow: 0 0 30px rgba(222, 61, 23, 0.5),
-    0 0 60px rgba(222, 61, 23, 0.3),
-    0 0 100px rgba(0, 255, 0, 0.1),
-    inset 0 0 40px rgba(222, 61, 23, 0.08);
-  overflow: hidden;
-}
-
 /* Terminal CRT overlay */
 .logo-crt-overlay {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: radial-gradient(
     ellipse at center,
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.4) 100%
   );
   pointer-events: none;
-  z-index: 8;
+  z-index: 1;
 }
 
 /* Heavy scanlines */
 .logo-scanlines {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: repeating-linear-gradient(
     0deg,
     transparent,
@@ -392,7 +381,7 @@
     rgba(222, 61, 23, 0.1) 4px
   );
   pointer-events: none;
-  z-index: 7;
+  z-index: 2;
   animation: scan-glitch 8s linear infinite;
 }
 
@@ -419,19 +408,25 @@
 
 /* Digital static/noise */
 .logo-static {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=");
   opacity: 0.15;
   pointer-events: none;
-  z-index: 6;
+  z-index: 3;
   mix-blend-mode: overlay;
 }
 
 /* Corruption overlay - digital decay */
 .logo-corruption-overlay {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: linear-gradient(
       90deg,
       transparent 0%,
@@ -443,7 +438,7 @@
   background-position: 0 0;
   opacity: 0.2;
   pointer-events: none;
-  z-index: 9;
+  z-index: 4;
   mix-blend-mode: hard-light;
 }
 
@@ -930,7 +925,7 @@
     left: 5%;
   }
 
-  .logo-section-diagonal {
+  .logo-section {
     width: 90%;
     max-width: 550px;
   }
@@ -969,13 +964,9 @@
     display: none;
   }
 
-  .logo-section-diagonal {
+  .logo-section {
     width: 95%;
     max-width: 450px;
-  }
-
-  .diagonal-split-layout .logo-wrapper {
-    padding: 20px;
   }
 
   .status-line {
