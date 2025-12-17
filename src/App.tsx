@@ -2,14 +2,22 @@ import './App.css'
 import { useState, useEffect, useRef } from 'react'
 
 const GLITCH_CHARS = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`█▓▒░'
-const TEXT_1 = 'This space is mine. You cannot sanitize it'
-const TEXT_2 = 'MORE SOON'
+
+// Add as many status texts as you want here
+const STATUS_TEXTS = [
+  'This space is mine.',
+  'You cannot sanitize it.',
+  // Add more texts here - they'll automatically cycle
+]
 
 function App() {
-  const [displayText, setDisplayText] = useState(TEXT_1)
+  const [displayText, setDisplayText] = useState(
+    STATUS_TEXTS[0].split('').map(() => GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]).join('')
+  )
   const [isDeconstructing, setIsDeconstructing] = useState(false)
-  const [isDecoding, setIsDecoding] = useState(false)
+  const [isDecoding, setIsDecoding] = useState(true)
   const timeoutsRef = useRef<NodeJS.Timeout[]>([])
+  const currentIndexRef = useRef(0)
 
   const transitionToText = (fromText: string, toText: string, onComplete?: () => void) => {
     setIsDeconstructing(true)
@@ -74,33 +82,58 @@ function App() {
   }
 
   useEffect(() => {
-    // Transition to TEXT_2 after 4s
-    const t1 = setTimeout(() => {
-      transitionToText(TEXT_1, TEXT_2)
-    }, 4000)
-    timeoutsRef.current.push(t1)
+    // Decode first text immediately on page load
+    let iteration = 0
+    const firstText = STATUS_TEXTS[0]
+    const targetLength = firstText.length
 
-    // Transition back to TEXT_1 after 4s (display) + 3s (transition) + 4s (display TEXT_2)
-    const t2 = setTimeout(() => {
-      transitionToText(TEXT_2, TEXT_1)
-    }, 4000 + 3000 + 4000)
-    timeoutsRef.current.push(t2)
+    const initialDecodeInterval = setInterval(() => {
+      setDisplayText(() => {
+        return firstText.split('')
+          .map((char, index) => {
+            if (index < iteration) {
+              return char
+            }
+            return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]
+          })
+          .join('')
+      })
 
-    // Set up continuous loop - full cycle is 14s (4s + 3s + 4s + 3s)
-    const loopInterval = setInterval(() => {
-      // Transition to TEXT_2
-      transitionToText(TEXT_1, TEXT_2)
+      iteration += 1 / 3
 
-      // Then transition back to TEXT_1 after 4s display + 3s transition
-      const innerTimeout = setTimeout(() => {
-        transitionToText(TEXT_2, TEXT_1)
-      }, 4000 + 3000)
-      timeoutsRef.current.push(innerTimeout)
-    }, 14000) // One complete cycle
+      if (iteration >= targetLength) {
+        clearInterval(initialDecodeInterval)
+        setDisplayText(firstText)
+        setIsDecoding(false)
 
-    timeoutsRef.current.push(loopInterval as any)
+        // After initial decode completes, start the cycle
+        const scheduleNextTransition = () => {
+          const timeout = setTimeout(() => {
+            // Get current and next text
+            const currentIndex = currentIndexRef.current
+            const nextIndex = (currentIndex + 1) % STATUS_TEXTS.length
+            const fromText = STATUS_TEXTS[currentIndex]
+            const toText = STATUS_TEXTS[nextIndex]
+
+            transitionToText(fromText, toText, () => {
+              // Update index for next cycle
+              currentIndexRef.current = nextIndex
+
+              // Schedule next transition
+              scheduleNextTransition()
+            })
+          }, 4000)
+
+          timeoutsRef.current.push(timeout)
+        }
+
+        // Start the cycle
+        scheduleNextTransition()
+      }
+    }, 50)
 
     return () => {
+      clearInterval(initialDecodeInterval)
       timeoutsRef.current.forEach(clearTimeout)
       timeoutsRef.current = []
     }
