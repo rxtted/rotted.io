@@ -1,6 +1,6 @@
 <div align="center">
   <img src="./public/bannerlogo.png" alt="ROTTED.IO" width="600">
-
+a
 
 ## Philosophy
 
@@ -33,22 +33,3 @@ You may NOT:
 The rot stops here.
 
 Full license: [LICENSE](./LICENSE)
-
-## Contributing
-
-This project embodies a specific philosophy of digital sovereignty and anti-corporate aesthetics. Any contributions should align with these values.
-
-## The Broader Ecosystem
-
-This landing page is the gateway to a larger self-hosted infrastructure. The rotted.io domain serves as:
-
-- **The Gateway**: Introduction to the philosophy and services
-- **Service Hub**: Access to self-hosted tools (Nextcloud, Bitwarden, etc.)
-- **Portfolio**: Showcase of digital sovereignty in action
-- **Statement**: A living example of independence from corporate platforms
-
----
-
-**Copyright (c) 2025 @rxtted**
-
-*Reclaiming digital territory.*
