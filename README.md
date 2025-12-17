@@ -1,6 +1,9 @@
 <div align="center">
   <img src="./public/bannerlogo.png" alt="ROTTED.IO" width="600">
-a
+</div>
+
+<br/>
+<br/>
 
 ## Philosophy
 
@@ -12,6 +15,12 @@ This is as much a statement about freedom and autonomy in the digital age as it 
 
 I don't expect anybody to be all that fussed about the project specifically, however i'm publishing this just in case somebody sees something they like, and they wanna work it into their own Projects.
 
+<br/>
+<br/>
+
+---
+
+<br/>
 
 ## License
 
