@@ -112,7 +112,7 @@ function App() {
 
         <footer className="terminal-footer">
           <div className="footer-noise"></div>
-          <span className="footer-text">ANTI-CORPORATE DIGITAL SPACE</span>
+          <span className="footer-text">@rxtted</span>
         </footer>
       </div>
     </div>
