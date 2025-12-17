@@ -6,7 +6,7 @@
 /* Terminal Container */
 .terminal-container {
   min-height: 100vh;
-  background: var(--void-absolute);
+  background: var(--foundation-charcoal);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -21,133 +21,164 @@
 /* ===== DIAGONAL SPLIT ZONES ===== */
 
 .decay-zone {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    35deg,
-    var(--foundation-charcoal) 0%,
-    var(--foundation-charcoal) 48%,
-    transparent 48%,
-    transparent 100%
-  );
+  background: var(--foundation-charcoal);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
   z-index: 0;
 }
 
 .cyber-zone {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    35deg,
-    transparent 0%,
-    transparent 48%,
-    var(--void-deep) 48%,
-    var(--void-deep) 100%
-  );
+  background: var(--foundation-charcoal);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
   z-index: 0;
 }
 
 /* ===== DECAY ZONE TEXTURES ===== */
 
-/* Weathered texture for decay zone */
+/* Weathered texture for decay zone - MUCH MORE VISIBLE */
 .weathered-texture {
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    repeating-linear-gradient(
       90deg,
       transparent,
-      transparent 3px,
-      rgba(99, 90, 83, 0.1) 3px,
-      rgba(99, 90, 83, 0.1) 4px
+      transparent 2px,
+      rgba(99, 90, 83, 0.6) 2px,
+      rgba(99, 90, 83, 0.6) 3px
     ),
     repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 2px,
-      rgba(54, 42, 37, 0.15) 2px,
-      rgba(54, 42, 37, 0.15) 3px
+      transparent 1px,
+      rgba(54, 42, 37, 0.7) 1px,
+      rgba(54, 42, 37, 0.7) 2px
     );
-  opacity: 0.6;
+  /* 135-degree diagonal: top-left triangle */
   clip-path: polygon(0 0, 100% 0, 0 100%);
   pointer-events: none;
+  z-index: 1;
 }
 
 .rust-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at 20% 30%,
-    rgba(222, 61, 23, 0.08) 0%,
-    transparent 50%
-  );
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(
+      ellipse at 15% 20%,
+      rgba(222, 61, 23, 0.18) 0%,
+      rgba(222, 61, 23, 0.08) 25%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 40% 60%,
+      rgba(220, 59, 23, 0.15) 0%,
+      rgba(220, 59, 23, 0.06) 20%,
+      transparent 40%
+    );
+  /* 135-degree diagonal: top-left triangle */
   clip-path: polygon(0 0, 100% 0, 0 100%);
   pointer-events: none;
+  z-index: 1;
 }
 
-/* Scratch marks - hand-drawn irregularity */
+/* Scratch marks - hand-drawn irregularity - MUCH MORE VISIBLE */
 .scratch-marks {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(
       127deg,
-      transparent 48%,
-      rgba(147, 147, 147, 0.15) 48%,
-      rgba(147, 147, 147, 0.15) 49%,
+      transparent 46%,
+      rgba(222, 61, 23, 0.3) 47%,
+      rgba(222, 61, 23, 0.3) 48%,
       transparent 49%
     ),
     linear-gradient(
       158deg,
-      transparent 62%,
-      rgba(147, 147, 147, 0.1) 62%,
-      rgba(147, 147, 147, 0.1) 63%,
-      transparent 63%
+      transparent 60%,
+      rgba(147, 147, 147, 0.5) 61%,
+      rgba(147, 147, 147, 0.5) 62.5%,
+      transparent 63.5%
+    ),
+    linear-gradient(
+      115deg,
+      transparent 35%,
+      rgba(220, 59, 23, 0.25) 36%,
+      rgba(220, 59, 23, 0.25) 37%,
+      transparent 38%
     );
+  /* 135-degree diagonal: top-left triangle */
   clip-path: polygon(0 0, 100% 0, 0 100%);
   pointer-events: none;
+  z-index: 1;
 }
 
 /* ===== CYBER ZONE TEXTURES ===== */
 
-/* Grid plane for cyber zone */
+/* Grid plane for cyber zone - very subtle terminal green */
 .grid-plane {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(0, 255, 0, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 0, 0.08) 1px, transparent 1px);
-  background-size: 30px 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  /* 135-degree diagonal: bottom-right triangle */
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
   pointer-events: none;
   animation: grid-pulse 3s infinite linear;
+  z-index: 1;
 }
 
 @keyframes grid-pulse {
   0%,
   100% {
-    opacity: 0.4;
+    opacity: 0.15;
   }
   50% {
-    opacity: 0.7;
+    opacity: 0.25;
   }
 }
 
 .data-stream {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: repeating-linear-gradient(
     125deg,
     transparent,
     transparent 10px,
-    rgba(0, 255, 255, 0.03) 10px,
-    rgba(0, 255, 255, 0.03) 11px
+    rgba(222, 61, 23, 0.12) 10px,
+    rgba(222, 61, 23, 0.12) 11px
   );
+  /* 135-degree diagonal: bottom-right triangle */
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
   pointer-events: none;
   animation: stream-flow 2s linear infinite;
+  z-index: 1;
 }
 
 @keyframes stream-flow {
@@ -160,39 +191,36 @@
 }
 
 .circuit-pattern {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: repeating-linear-gradient(
     90deg,
     transparent,
     transparent 50px,
-    rgba(0, 136, 255, 0.02) 50px,
-    rgba(0, 136, 255, 0.02) 51px
+    rgba(220, 59, 23, 0.15) 50px,
+    rgba(220, 59, 23, 0.15) 51px
   );
+  /* 135-degree diagonal: bottom-right triangle */
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
   pointer-events: none;
+  z-index: 1;
 }
 
 /* ===== HARSH DIAGONAL DIVIDE LINE ===== */
 
 .diagonal-divide {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    35deg,
-    transparent 0%,
-    transparent calc(50% - 3px),
-    var(--rot-primary) calc(50% - 3px),
-    var(--rot-primary) calc(50% + 3px),
-    transparent calc(50% + 3px),
-    transparent 100%
-  );
-  z-index: 5;
+  background: transparent;
   pointer-events: none;
-  box-shadow: 0 0 20px rgba(222, 61, 23, 0.5);
+  z-index: 5;
+  display: none;
 }
 
 /* ===== GLOBAL SCANLINES ===== */
@@ -222,11 +250,11 @@
   top: 10%;
   left: 5%;
   background: rgba(43, 43, 42, 0.9);
-  border: 2px solid var(--gray-weathered);
+  border: 2px solid var(--rot-blood);
   padding: 20px;
   transform: rotate(-7deg);
   box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.6),
-    0 0 15px rgba(99, 90, 83, 0.2);
+    0 0 15px rgba(220, 59, 23, 0.3);
   max-width: 400px;
   z-index: 8;
   backdrop-filter: blur(1px);
@@ -237,11 +265,11 @@
   bottom: 15%;
   right: 6%;
   background: rgba(12, 13, 12, 0.9);
-  border: 2px solid var(--terminal-green);
+  border: 2px solid var(--rot-primary);
   padding: 16px;
   transform: rotate(5deg);
   box-shadow: -8px -8px 0 rgba(0, 0, 0, 0.6),
-    0 0 15px rgba(0, 255, 0, 0.2);
+    0 0 15px rgba(222, 61, 23, 0.3);
   max-width: 350px;
   z-index: 8;
   font-family: "VT323", monospace;
@@ -253,11 +281,11 @@
   bottom: 25%;
   left: 8%;
   background: rgba(43, 43, 42, 0.85);
-  border: 2px solid var(--gray-ash);
+  border: 2px solid var(--rot-blood);
   padding: 16px;
   transform: rotate(-12deg);
   box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5),
-    0 0 10px rgba(99, 90, 83, 0.15);
+    0 0 10px rgba(220, 59, 23, 0.2);
   z-index: 7;
 }
 
@@ -267,7 +295,7 @@
   left: 3px;
   right: -3px;
   bottom: -3px;
-  border: 1px solid rgba(147, 147, 147, 0.3);
+  border: 1px solid rgba(222, 61, 23, 0.2);
   pointer-events: none;
 }
 
@@ -282,14 +310,14 @@
 }
 
 .terminal-header-mini {
-  background: var(--terminal-green);
+  background: var(--rot-primary);
   color: var(--void-absolute);
   padding: 6px 12px;
   font-size: 13px;
   font-weight: bold;
   letter-spacing: 2px;
   margin: -16px -16px 12px -16px;
-  border-bottom: 2px solid var(--terminal-green);
+  border-bottom: 2px solid var(--rot-primary);
 }
 
 .ascii-status {
@@ -303,12 +331,13 @@
 
 .ascii-skull {
   font-family: "Courier New", monospace;
-  color: var(--gray-weathered);
+  color: var(--rot-primary);
   font-size: 18px;
   line-height: 1.2;
   text-align: center;
   white-space: pre;
   margin: 0;
+  text-shadow: 0 0 5px rgba(222, 61, 23, 0.4);
 }
 
 /* ===== CENTERED LOGO AT INTERSECTION ===== */
@@ -323,16 +352,18 @@
   z-index: 10;
 }
 
-/* Logo wrapper - DOUBLE border showing both aesthetics */
+/* Logo wrapper - RED primary with subtle terminal green accent */
 .diagonal-split-layout .logo-wrapper {
   position: relative;
   padding: 30px;
   background: var(--void-deep);
   border: 3px solid var(--rot-primary);
-  outline: 2px solid var(--terminal-green);
+  outline: 1px solid var(--terminal-green);
   outline-offset: -6px;
-  box-shadow: 0 0 30px rgba(222, 61, 23, 0.4),
-    0 0 50px rgba(0, 255, 0, 0.2), inset 0 0 40px rgba(222, 61, 23, 0.08);
+  box-shadow: 0 0 30px rgba(222, 61, 23, 0.5),
+    0 0 60px rgba(222, 61, 23, 0.3),
+    0 0 100px rgba(0, 255, 0, 0.1),
+    inset 0 0 40px rgba(222, 61, 23, 0.08);
   overflow: hidden;
 }
 
@@ -810,7 +841,7 @@
 }
 
 .bracket {
-  color: var(--terminal-green);
+  color: var(--rot-primary);
 }
 
 .status-text {
@@ -909,25 +940,14 @@
   .diagonal-divide {
     background: linear-gradient(
       25deg,
-      transparent 0%,
       transparent calc(50% - 2px),
       var(--rot-primary) calc(50% - 2px),
       var(--rot-primary) calc(50% + 2px),
-      transparent calc(50% + 2px),
-      transparent 100%
+      transparent calc(50% + 2px)
     );
   }
 
-  .decay-zone,
-  .cyber-zone {
-    background: linear-gradient(
-      25deg,
-      var(--foundation-charcoal) 0%,
-      var(--foundation-charcoal) 48%,
-      var(--void-deep) 48%,
-      var(--void-deep) 100%
-    );
-  }
+  /* All zones maintain same clip-path at all sizes */
 
   .panel-rotated {
     top: 5%;

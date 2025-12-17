@@ -95,7 +95,7 @@ function App() {
         </div>
         <div className="status-line">
           <span className="bracket">[</span>
-          <span className="status-text">CYBER // DECAY</span>
+          <span className="status-text">FUCK YOUR CONTROL</span>
           <span className="bracket">]</span>
         </div>
       </div>
