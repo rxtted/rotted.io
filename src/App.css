@@ -842,6 +842,25 @@
 .status-text {
   color: var(--gray-silver);
   margin: 0 8px;
+  display: inline-block;
+  position: relative;
+}
+
+.status-text.decoding {
+  text-shadow:
+    -2px 0 var(--rot-primary),
+    2px 0 var(--terminal-green),
+    0 0 10px rgba(222, 61, 23, 0.5);
+  animation: decode-flicker 0.1s infinite;
+}
+
+@keyframes decode-flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.9;
+  }
 }
 
 /* ===== SYSTEM STATUS ===== */
