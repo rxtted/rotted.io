@@ -13,9 +13,10 @@ type StatusTextConfig =
 
 // Add as many status texts as you want here
 const STATUS_TEXTS: StatusTextConfig[] = [
-  'This space is mine.',
-  'You cannot sanitize this.',
-  { text: 'You cannot monetize this.', useWordDiff: true },
+  'I am nobodies property.',
+  'You cannot sanitize me.',
+  { text: 'You cannot monetize me.', useWordDiff: true },
+  { text: 'You cannot own me.', useWordDiff: true },
   'More coming soon.'
   // Add more texts here - they'll automatically cycle
 ]
