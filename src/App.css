@@ -1,9 +1,3 @@
-/* ===================================
-   DIAGONAL SPLIT LAYOUT
-   Cyber-Decay Hybrid Design
-   =================================== */
-
-/* Terminal Container - with logo background effects */
 .terminal-container {
   min-height: 100vh;
   background: var(--void-deep);
@@ -17,8 +11,6 @@
 .diagonal-split-layout {
   padding: 0;
 }
-
-/* ===== DIAGONAL SPLIT ZONES ===== */
 
 .decay-zone {
   position: fixed;
@@ -42,9 +34,6 @@
   z-index: 0;
 }
 
-/* ===== DECAY ZONE TEXTURES ===== */
-
-/* Weathered texture for decay zone - MUCH MORE VISIBLE */
 .weathered-texture {
   position: fixed;
   top: 0;
@@ -66,7 +55,7 @@
       rgba(54, 42, 37, 0.7) 1px,
       rgba(54, 42, 37, 0.7) 2px
     );
-  /* 135-degree diagonal: top-left triangle */
+
   clip-path: polygon(0 0, 100% 0, 0 100%);
   pointer-events: none;
   z-index: 1;
@@ -91,13 +80,13 @@
       rgba(220, 59, 23, 0.06) 20%,
       transparent 40%
     );
-  /* 135-degree diagonal: top-left triangle */
+
   clip-path: polygon(0 0, 100% 0, 0 100%);
   pointer-events: none;
   z-index: 1;
 }
 
-/* Scratch marks - hand-drawn irregularity - MUCH MORE VISIBLE */
+
 .scratch-marks {
   position: fixed;
   top: 0;
@@ -126,15 +115,12 @@
       rgba(220, 59, 23, 0.25) 37%,
       transparent 38%
     );
-  /* 135-degree diagonal: top-left triangle */
+
   clip-path: polygon(0 0, 100% 0, 0 100%);
   pointer-events: none;
   z-index: 1;
 }
 
-/* ===== CYBER ZONE TEXTURES ===== */
-
-/* Grid plane for cyber zone - very subtle terminal green */
 .grid-plane {
   position: fixed;
   top: 0;
@@ -144,7 +130,7 @@
   background-image: linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
-  /* 135-degree diagonal: bottom-right triangle */
+
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
   pointer-events: none;
   animation: grid-pulse 3s infinite linear;
@@ -174,7 +160,7 @@
     rgba(222, 61, 23, 0.12) 10px,
     rgba(222, 61, 23, 0.12) 11px
   );
-  /* 135-degree diagonal: bottom-right triangle */
+
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
   pointer-events: none;
   animation: stream-flow 2s linear infinite;
@@ -203,13 +189,13 @@
     rgba(220, 59, 23, 0.15) 50px,
     rgba(220, 59, 23, 0.15) 51px
   );
-  /* 135-degree diagonal: bottom-right triangle */
+
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
   pointer-events: none;
   z-index: 1;
 }
 
-/* ===== HARSH DIAGONAL DIVIDE LINE ===== */
+
 
 .diagonal-divide {
   position: fixed;
@@ -222,8 +208,6 @@
   z-index: 5;
   display: none;
 }
-
-/* ===== GLOBAL SCANLINES ===== */
 
 .scanlines {
   position: fixed;
@@ -242,8 +226,6 @@
   z-index: 20;
   opacity: 0.5;
 }
-
-/* ===== ROTATED PANELS ===== */
 
 .panel-rotated {
   position: absolute;
@@ -298,8 +280,7 @@
   border: 1px solid rgba(222, 61, 23, 0.2);
   pointer-events: none;
 }
-
-/* ===== PANEL CONTENT ===== */
+/
 
 .manifesto-text {
   font-family: "IBM Plex Mono", monospace;
@@ -340,9 +321,6 @@
   text-shadow: 0 0 5px rgba(222, 61, 23, 0.4);
 }
 
-/* ===== CENTERED LOGO AT INTERSECTION ===== */
-
-/* Logo section - centered */
 .logo-section {
   position: relative;
   max-width: 650px;
