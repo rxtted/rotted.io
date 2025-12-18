@@ -127,6 +127,149 @@
   animation: glitch-blocks 12s infinite steps(4);
 }
 
+/* DATA HEMORRHAGE - Bleeding vertical streaks */
+.data-hemorrhage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 2;
+  background-image:
+    linear-gradient(180deg, var(--rot-primary) 0%, transparent 100%),
+    linear-gradient(180deg, var(--rot-blood) 0%, transparent 100%),
+    linear-gradient(180deg, rgba(222, 61, 23, 0.8) 0%, transparent 100%),
+    linear-gradient(180deg, rgba(220, 59, 23, 0.7) 0%, transparent 100%),
+    linear-gradient(180deg, var(--rot-burning) 0%, transparent 100%);
+  background-size: 3px 0%, 2px 0%, 4px 0%, 2px 0%, 3px 0%;
+  background-position: 15% 0%, 45% 0%, 67% 0%, 82% 0%, 28% 0%;
+  background-repeat: no-repeat;
+  animation: hemorrhage-drip 18s infinite;
+}
+
+@keyframes hemorrhage-drip {
+  0%, 100% {
+    background-size: 3px 0%, 2px 0%, 4px 0%, 2px 0%, 3px 0%;
+    opacity: 0;
+  }
+  5% {
+    background-size: 3px 0%, 2px 0%, 4px 0%, 2px 0%, 3px 0%;
+    opacity: 0.6;
+  }
+  15% {
+    background-size: 3px 35%, 2px 0%, 4px 0%, 2px 0%, 3px 0%;
+    opacity: 0.8;
+  }
+  20% {
+    background-size: 3px 45%, 2px 28%, 4px 0%, 2px 0%, 3px 0%;
+    opacity: 0.7;
+  }
+  28% {
+    background-size: 3px 55%, 2px 40%, 4px 32%, 2px 0%, 3px 0%;
+    opacity: 0.6;
+  }
+  35% {
+    background-size: 3px 60%, 2px 48%, 4px 42%, 2px 35%, 3px 0%;
+    opacity: 0.5;
+  }
+  42% {
+    background-size: 3px 65%, 2px 55%, 4px 50%, 2px 44%, 3px 38%;
+    opacity: 0.4;
+  }
+  50% {
+    background-size: 3px 70%, 2px 60%, 4px 58%, 2px 52%, 3px 46%;
+    opacity: 0.3;
+  }
+  60% {
+    background-size: 3px 70%, 2px 60%, 4px 58%, 2px 52%, 3px 46%;
+    opacity: 0.2;
+  }
+  70% {
+    background-size: 3px 70%, 2px 60%, 4px 58%, 2px 52%, 3px 46%;
+    opacity: 0.1;
+  }
+  75% {
+    background-size: 3px 0%, 2px 0%, 4px 0%, 2px 0%, 3px 0%;
+    opacity: 0;
+  }
+}
+
+/* DECOMPOSITION FOG - Slow-drifting corruption clouds */
+.decomposition-fog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(ellipse 800px 600px at 20% 30%, rgba(222, 61, 23, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 700px 700px at 75% 60%, rgba(220, 59, 23, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 900px 500px at 50% 80%, rgba(224, 62, 30, 0.08) 0%, transparent 50%);
+  animation: fog-drift 50s infinite ease-in-out;
+}
+
+@keyframes fog-drift {
+  0% {
+    background-position: 20% 30%, 75% 60%, 50% 80%;
+    opacity: 0.4;
+  }
+  25% {
+    background-position: 30% 40%, 70% 50%, 45% 75%;
+    opacity: 0.5;
+  }
+  50% {
+    background-position: 25% 50%, 80% 55%, 55% 70%;
+    opacity: 0.45;
+  }
+  75% {
+    background-position: 15% 35%, 72% 65%, 48% 82%;
+    opacity: 0.5;
+  }
+  100% {
+    background-position: 20% 30%, 75% 60%, 50% 80%;
+    opacity: 0.4;
+  }
+}
+
+/* MEMORY LEAK VIGNETTE - Pulsing dark corners */
+.memory-leak-vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 3;
+  background-image:
+    radial-gradient(ellipse 60% 60% at 0% 0%, rgba(0, 0, 0, 0.6) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 60% at 100% 0%, rgba(0, 0, 0, 0.6) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 60% at 0% 100%, rgba(0, 0, 0, 0.6) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 60% at 100% 100%, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+  animation: memory-gasp 7s infinite ease-in-out;
+}
+
+@keyframes memory-gasp {
+  0%, 100% {
+    opacity: 0.6;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  }
+  25% {
+    opacity: 0.8;
+    background-size: 110% 110%, 110% 110%, 110% 110%, 110% 110%;
+  }
+  50% {
+    opacity: 0.7;
+    background-size: 105% 105%, 105% 105%, 105% 105%, 105% 105%;
+  }
+  75% {
+    opacity: 0.85;
+    background-size: 115% 115%, 115% 115%, 115% 115%, 115% 115%;
+  }
+}
+
 @keyframes glitch-blocks {
   0%, 100% {
     opacity: 0;
