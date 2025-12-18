@@ -307,6 +307,11 @@ function App() {
 
   return (
     <div className="terminal-container">
+      {/* Digital Necrosis - Background decay layers */}
+      <div className="necrosis-grid"></div>
+      <div className="necrosis-particles"></div>
+      <div className="necrosis-glitch-blocks"></div>
+
       {/* Logo effects applied to background */}
       <div className="logo-scanlines"></div>
       <div className="logo-crt-overlay"></div>

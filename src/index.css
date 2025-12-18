@@ -86,51 +86,6 @@ body {
   min-height: 100vh;
 }
 
-/* Noise texture utility */
-.textured-surface {
-  position: relative;
-}
-
-.textured-surface::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,.1) 2px,
-      rgba(0,0,0,.1) 4px
-    );
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Scanline effect */
-.scanlines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 255, 0, 0.03) 2px,
-    rgba(0, 255, 0, 0.03) 4px
-  );
-  pointer-events: none;
-  animation: scan 8s linear infinite;
-  z-index: 10;
-}
-
-@keyframes scan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
-}
-
 /* No smooth transitions - only harsh, stepped */
 * {
   transition: none !important;
