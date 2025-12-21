@@ -114,19 +114,6 @@
   }
 }
 
-/* DIGITAL NECROSIS - Glitch blocks */
-.necrosis-glitch-blocks {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  z-index: 5;
-  opacity: 0;
-  animation: glitch-blocks 12s infinite steps(4);
-}
-
 /* DATA HEMORRHAGE - Bleeding vertical streaks */
 .data-hemorrhage {
   position: fixed;
@@ -267,64 +254,6 @@
   75% {
     opacity: 0.85;
     background-size: 115% 115%, 115% 115%, 115% 115%, 115% 115%;
-  }
-}
-
-@keyframes glitch-blocks {
-  0%, 100% {
-    opacity: 0;
-    background:
-      linear-gradient(var(--rot-primary) 100%, transparent 100%),
-      linear-gradient(var(--rot-burning) 100%, transparent 100%);
-    background-size: 0 0, 0 0;
-    background-position: 0 0, 0 0;
-  }
-  8% {
-    opacity: 0.4;
-    background:
-      linear-gradient(var(--rot-primary) 100%, transparent 100%),
-      linear-gradient(var(--rot-burning) 100%, transparent 100%);
-    background-size: 120px 80px, 90px 60px;
-    background-position: 15% 20%, 75% 65%;
-    background-repeat: no-repeat;
-  }
-  12% {
-    opacity: 0;
-  }
-  32% {
-    opacity: 0.5;
-    background:
-      linear-gradient(rgba(222, 61, 23, 0.8) 100%, transparent 100%),
-      linear-gradient(rgba(220, 59, 23, 0.6) 100%, transparent 100%);
-    background-size: 100px 70px, 110px 90px;
-    background-position: 60% 45%, 25% 80%;
-    background-repeat: no-repeat;
-  }
-  37% {
-    opacity: 0;
-  }
-  61% {
-    opacity: 0.45;
-    background:
-      linear-gradient(var(--rot-blood) 100%, transparent 100%);
-    background-size: 140px 100px;
-    background-position: 40% 30%;
-    background-repeat: no-repeat;
-  }
-  67% {
-    opacity: 0;
-  }
-  89% {
-    opacity: 0.35;
-    background:
-      linear-gradient(rgba(222, 61, 23, 0.7) 100%, transparent 100%),
-      linear-gradient(rgba(220, 59, 23, 0.5) 100%, transparent 100%);
-    background-size: 85px 65px, 95px 75px;
-    background-position: 80% 50%, 10% 15%;
-    background-repeat: no-repeat;
-  }
-  94% {
-    opacity: 0;
   }
 }
 

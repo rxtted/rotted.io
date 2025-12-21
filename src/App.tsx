@@ -320,9 +320,6 @@ function App() {
       {/* Memory Leak Vignette - Corner darkness */}
       <div className="memory-leak-vignette"></div>
 
-      {/* Glitch blocks */}
-      <div className="necrosis-glitch-blocks"></div>
-
       {/* Logo effects applied to background */}
       <div className="logo-scanlines"></div>
       <div className="logo-crt-overlay"></div>
