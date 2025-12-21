@@ -314,9 +314,6 @@ function App() {
       <div className="necrosis-grid"></div>
       <div className="necrosis-particles"></div>
 
-      {/* Data Hemorrhage - Bleeding streaks */}
-      <div className="data-hemorrhage"></div>
-
       {/* Memory Leak Vignette - Corner darkness */}
       <div className="memory-leak-vignette"></div>
 
