@@ -636,7 +636,7 @@
 }
 
 .bracket {
-  color: var(--rot-primary);
+  color: var(--rot-blood);
 }
 
 /* Token-based rendering for word-diff transitions */
@@ -646,30 +646,24 @@
 }
 
 .status-token {
-  color: var(--terminal-green);
+  color: var(--gray-silver);
   position: relative;
   display: inline;
 }
 
 .status-token.decoding {
-  text-shadow:
-    -2px 0 var(--rot-primary),
-    2px 0 var(--terminal-green),
-    0 0 10px rgba(222, 61, 23, 0.5);
+  color: var(--terminal-green);
   animation: decode-flicker 0.1s infinite;
 }
 
 .status-text-content {
-  color: var(--terminal-green);
+  color: var(--gray-silver);
   position: relative;
   display: inline;
 }
 
 .status-text-content.decoding {
-  text-shadow:
-    -2px 0 var(--rot-primary),
-    2px 0 var(--terminal-green),
-    0 0 10px rgba(222, 61, 23, 0.5);
+  color: var(--terminal-green);
   animation: decode-flicker 0.1s infinite;
 }
 
