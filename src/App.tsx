@@ -13,11 +13,10 @@ type StatusTextConfig =
 
 // Add as many status texts as you want here
 const STATUS_TEXTS: StatusTextConfig[] = [
-  'I am nobodys property.',
-  'You cannot sanitize me.',
-  { text: 'You cannot monetize me.', useWordDiff: true },
-  { text: 'You cannot own me.', useWordDiff: true },
-  'More coming soon.'
+  'Our freedom is not negotiable.',
+  'You cannot sanitize us.',
+  { text: 'You cannot monetize us.', useWordDiff: true },
+  { text: 'You cannot own us.', useWordDiff: true },
   // Add more texts here - they'll automatically cycle
 ]
 
@@ -307,6 +306,16 @@ function App() {
 
   return (
     <div className="terminal-container">
+      {/* Decomposition Fog - Deepest layer */}
+      <div className="decomposition-fog"></div>
+
+      {/* Digital Necrosis - Background decay layers */}
+      <div className="necrosis-grid"></div>
+      <div className="necrosis-particles"></div>
+
+      {/* Memory Leak Vignette - Corner darkness */}
+      <div className="memory-leak-vignette"></div>
+
       {/* Logo effects applied to background */}
       <div className="logo-scanlines"></div>
       <div className="logo-crt-overlay"></div>
