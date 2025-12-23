@@ -435,46 +435,39 @@ function App() {
             <article className="philosophy-panel philosophy-panel-core">
               <h3>Operational Doctrine</h3>
               <p>
-                Reject the smooth web. Keep the seams visible. Every surface is a reminder that this
-                space is hand-built, unoptimized, and not for sale.
+                Reject the corporate web. Keep the seams visible. Every surface proves this space is
+                self-hosted, uncompromised, and not for sale.
               </p>
               <div className="philosophy-tags">
-                <span>Anti-aesthetic</span>
+                <span>Independent</span>
                 <span>Privacy-first</span>
-                <span>Handmade</span>
+                <span>Open-Source</span>
               </div>
             </article>
 
             <article className="philosophy-panel philosophy-panel-grid">
               <h3>Project Goals</h3>
               <ul>
-                <li>Own the stack. Host the code. Keep the logs.</li>
-                <li>Build tools that survive platform hostility.</li>
-                <li>Trade convenience for control — every time.</li>
-                <li>Document the rot, then weaponize it.</li>
+                <li>Full digital ownership, without compromises.</li>
+                <li>Build tools to only exposure what i intend.</li>
+                <li>Trade convenience for control, every time.</li>
+                <li>Highlight corporate rot embedded in my everyday tools.</li>
               </ul>
             </article>
 
             <article className="philosophy-panel philosophy-panel-terminal">
               <h3>Guiding Constraints</h3>
               <div className="terminal-strip">
-                <p><span className="terminal-prompt">&gt;</span> No corporate dependency chains</p>
-                <p><span className="terminal-prompt">&gt;</span> No silent telemetry</p>
-                <p><span className="terminal-prompt">&gt;</span> No friendly gloss</p>
-                <p><span className="terminal-prompt">&gt;</span> No fake minimalism</p>
+    <p><span className="terminal-prompt">&gt;</span> Minimal inherited corporate dependencies</p>
+    <p><span className="terminal-prompt">&gt;</span> Every service, ran on local hardware</p>
+    <p><span className="terminal-prompt">&gt;</span> Use of subscription tools is forbidden</p>
+    <p><span className="terminal-prompt">&gt;</span> Absolutely no fake minimalism</p>
               </div>
             </article>
           </div>
 
           <div className="philosophy-footer">
-            <div className="philosophy-signal">
-              <span className="signal-dot"></span>
-              <span>We are not building a product. We are building territory.</span>
-            </div>
-            <div className="philosophy-pulse">
-              <span>STATUS:</span>
-              <span className="pulse-text">LIVE / UNSTABLE / OWNED</span>
-            </div>
+            
           </div>
         </div>
       </section>
