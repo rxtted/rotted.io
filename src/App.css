@@ -9,6 +9,17 @@
   justify-content: center;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 /* ===== LOGO SECTION ===== */
 .logo-section {
   position: relative;
@@ -279,6 +290,261 @@
   pointer-events: none;
   z-index: 4;
   mix-blend-mode: hard-light;
+}
+
+/* ===== PHILOSOPHY SECTION ===== */
+.home {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--void-deep);
+}
+
+.philosophy-section {
+  position: relative;
+  padding: 120px 6vw 160px;
+  background: var(--void-deep);
+  overflow: hidden;
+}
+
+.philosophy-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(99, 90, 83, 0.06) 0px,
+      rgba(99, 90, 83, 0.06) 1px,
+      transparent 1px,
+      transparent 14px
+    ),
+    radial-gradient(circle at 18% 30%, rgba(222, 61, 23, 0.14), transparent 50%),
+    radial-gradient(circle at 78% 68%, rgba(224, 62, 30, 0.1), transparent 46%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.philosophy-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9IjAuNyIgbnVtT2N0YXZlcz0iMiIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbHRlcj0idXJsKCNuKSIgb3BhY2l0eT0iMC4xMiIvPjwvc3ZnPg==");
+  mix-blend-mode: multiply;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.philosophy-chassis {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 36px 36px;
+  background: rgba(23, 22, 22, 0.9);
+  border: 2px solid var(--gray-weathered);
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.8);
+  clip-path: polygon(0 0, 98% 0, 100% 8%, 100% 100%, 2% 100%, 0 92%);
+}
+
+.philosophy-header {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 36px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.philosophy-kicker {
+  font-family: 'Press Start 2P', 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--rot-primary);
+}
+
+.philosophy-header h2 {
+  font-family: 'VT323', 'IBM Plex Mono', monospace;
+  font-size: clamp(32px, 4vw, 52px);
+  letter-spacing: 2px;
+  color: var(--remnant-pale);
+}
+
+.philosophy-lede {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--gray-silver);
+  text-transform: none;
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+.philosophy-panel {
+  position: relative;
+  padding: 22px;
+  background: var(--foundation-charcoal);
+  border: 2px solid var(--gray-ash);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.8);
+  text-transform: none;
+}
+
+.philosophy-panel::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(147, 147, 147, 0.3);
+  pointer-events: none;
+}
+
+.philosophy-panel h3 {
+  font-family: 'VT323', 'IBM Plex Mono', monospace;
+  font-size: 24px;
+  color: var(--remnant-pale);
+  margin-bottom: 12px;
+}
+
+.philosophy-panel p,
+.philosophy-panel li {
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--gray-silver);
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+.philosophy-panel ul {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  padding-left: 0;
+}
+
+.philosophy-panel li::before {
+  content: '◼';
+  color: var(--rot-primary);
+  margin-right: 10px;
+}
+
+.philosophy-panel-core {
+  grid-column: 1 / span 7;
+  transform: rotate(-0.6deg);
+}
+
+.philosophy-panel-grid {
+  grid-column: 6 / span 7;
+  transform: rotate(0.8deg);
+  margin-top: 24px;
+  background: linear-gradient(145deg, rgba(43, 43, 42, 0.9), rgba(23, 22, 22, 0.95));
+}
+
+.philosophy-panel-terminal {
+  grid-column: 2 / span 6;
+  transform: rotate(-1deg);
+  margin-top: 12px;
+  background: rgba(12, 13, 12, 0.9);
+  border-color: var(--rot-primary);
+}
+
+.philosophy-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.philosophy-tags span {
+  padding: 4px 8px;
+  border: 1px solid var(--rot-primary);
+  color: var(--rot-primary);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.terminal-strip {
+  display: grid;
+  gap: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--terminal-green);
+}
+
+.terminal-prompt {
+  color: var(--rot-primary);
+  margin-right: 8px;
+}
+
+.philosophy-footer {
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 18px;
+  border-top: 2px solid rgba(99, 90, 83, 0.4);
+  padding-top: 20px;
+}
+
+.philosophy-signal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--remnant-pale);
+}
+
+.signal-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--rot-primary);
+  border: 2px solid var(--void-absolute);
+  box-shadow: 0 0 0 2px var(--rot-primary);
+}
+
+.philosophy-pulse {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Press Start 2P', 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--terminal-amber);
+}
+
+.pulse-text {
+  color: var(--rot-primary);
+}
+
+@media (max-width: 960px) {
+  .philosophy-chassis {
+    padding: 36px 24px;
+  }
+
+  .philosophy-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .philosophy-panel-core,
+  .philosophy-panel-grid,
+  .philosophy-panel-terminal {
+    grid-column: auto;
+    transform: none;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .philosophy-section {
+    padding: 90px 6vw 120px;
+  }
+
+  .philosophy-header h2 {
+    font-size: 32px;
+  }
+
+  .philosophy-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* ===== LOGO GLITCH EFFECTS ===== */

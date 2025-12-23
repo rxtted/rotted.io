@@ -305,96 +305,158 @@ function App() {
   }, [])
 
   return (
-    <div className="terminal-container">
-      {/* Decomposition Fog - Deepest layer */}
-      <div className="decomposition-fog"></div>
+    <div className="home">
+      <section className="terminal-container" aria-labelledby="home-title">
+        {/* Decomposition Fog - Deepest layer */}
+        <div className="decomposition-fog"></div>
 
-      {/* Digital Necrosis - Background decay layers */}
-      <div className="necrosis-grid"></div>
-      <div className="necrosis-particles"></div>
+        {/* Digital Necrosis - Background decay layers */}
+        <div className="necrosis-grid"></div>
+        <div className="necrosis-particles"></div>
 
-      {/* Memory Leak Vignette - Corner darkness */}
-      <div className="memory-leak-vignette"></div>
+        {/* Memory Leak Vignette - Corner darkness */}
+        <div className="memory-leak-vignette"></div>
 
-      {/* Logo effects applied to background */}
-      <div className="logo-scanlines"></div>
-      <div className="logo-crt-overlay"></div>
-      <div className="logo-static"></div>
-      <div className="logo-corruption-overlay"></div>
+        {/* Logo effects applied to background */}
+        <div className="logo-scanlines"></div>
+        <div className="logo-crt-overlay"></div>
+        <div className="logo-static"></div>
+        <div className="logo-corruption-overlay"></div>
 
-      {/* Centered logo */}
-      <div className="logo-section">
-        {/* Multi-layer glitch system */}
-        <div className="logo-glitch-container">
-          {/* Chromatic layers - always offset */}
-          <img
-            src="/bannerlogo.svg"
-            alt=""
-            className="banner-logo banner-logo-red"
-            aria-hidden="true"
-          />
-          <img
-            src="/bannerlogo.svg"
-            alt=""
-            className="banner-logo banner-logo-cyan"
-            aria-hidden="true"
-          />
+        {/* Centered logo */}
+        <div className="logo-section">
+          <h1 className="visually-hidden" id="home-title">ROTTED.IO</h1>
+          {/* Multi-layer glitch system */}
+          <div className="logo-glitch-container">
+            {/* Chromatic Layers - always offset */}
+            <img
+              src="/bannerlogo.svg"
+              alt=""
+              className="banner-logo banner-logo-red"
+              aria-hidden="true"
+            />
+            <img
+              src="/bannerlogo.svg"
+              alt=""
+              className="banner-logo banner-logo-cyan"
+              aria-hidden="true"
+            />
 
-          {/* Sliced glitch layers - pixel displacement */}
-          <img
-            src="/bannerlogo.svg"
-            alt=""
-            className="banner-logo banner-logo-slice-1"
-            aria-hidden="true"
-          />
-          <img
-            src="/bannerlogo.svg"
-            alt=""
-            className="banner-logo banner-logo-slice-2"
-            aria-hidden="true"
-          />
-          <img
-            src="/bannerlogo.svg"
-            alt=""
-            className="banner-logo banner-logo-slice-3"
-            aria-hidden="true"
-          />
-          <img
-            src="/bannerlogo.svg"
-            alt=""
-            className="banner-logo banner-logo-slice-4"
-            aria-hidden="true"
-          />
+            {/* Sliced glitch layers - pixel displacement */}
+            <img
+              src="/bannerlogo.svg"
+              alt=""
+              className="banner-logo banner-logo-slice-1"
+              aria-hidden="true"
+            />
+            <img
+              src="/bannerlogo.svg"
+              alt=""
+              className="banner-logo banner-logo-slice-2"
+              aria-hidden="true"
+            />
+            <img
+              src="/bannerlogo.svg"
+              alt=""
+              className="banner-logo banner-logo-slice-3"
+              aria-hidden="true"
+            />
+            <img
+              src="/bannerlogo.svg"
+              alt=""
+              className="banner-logo banner-logo-slice-4"
+              aria-hidden="true"
+            />
 
-          {/* Main layer */}
-          <img
-            src="/bannerlogo.svg"
-            alt="ROTTED.IO"
-            className="banner-logo banner-logo-main"
-          />
-        </div>
+            {/* Main layer */}
+            <img
+              src="/bannerlogo.svg"
+              alt="ROTTED.IO"
+              className="banner-logo banner-logo-main"
+            />
+          </div>
 
-        <div className="status-line">
-          <span className="bracket">[</span>
-          <span className="status-text-wrapper">
-            {useTokenDisplay ? (
-              displayTokens.map((token, idx) => (
-                <span
-                  key={idx}
-                  className={`status-token${token.isAnimating && (isDeconstructing || isDecoding) ? ' decoding' : ''}`}
-                >
-                  {token.text}
+          <div className="status-line">
+            <span className="bracket">[</span>
+            <span className="status-text-wrapper">
+              {useTokenDisplay ? (
+                displayTokens.map((token, idx) => (
+                  <span
+                    key={idx}
+                    className={`status-token${token.isAnimating && (isDeconstructing || isDecoding) ? ' decoding' : ''}`}
+                  >
+                    {token.text}
+                  </span>
+                ))
+              ) : (
+                <span className={`status-text-content${isDeconstructing || isDecoding ? ' decoding' : ''}`}>
+                  {displayText}
                 </span>
-              ))
-            ) : (
-              <span className={`status-text-content${isDeconstructing || isDecoding ? ' decoding' : ''}`}>
-                {displayText}
-              </span>
-            )}
-          </span>
-          <span className="bracket">]</span>
+              )}
+            </span>
+            <span className="bracket">]</span>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section className="philosophy-section" aria-labelledby="philosophy-title">
+        <div className="philosophy-chassis">
+          <header className="philosophy-header">
+            <p className="philosophy-kicker">SYSTEM MANIFEST</p>
+            <h2 id="philosophy-title">Philosophy &amp; Goals</h2>
+            <p className="philosophy-lede">
+              rotted.io is a refusal engine: a space for self-hosted autonomy, hostile to sanitization,
+              and built to survive corporate gravity.
+            </p>
+          </header>
+
+          <div className="philosophy-grid">
+            <article className="philosophy-panel philosophy-panel-core">
+              <h3>Operational Doctrine</h3>
+              <p>
+                Reject the smooth web. Keep the seams visible. Every surface is a reminder that this
+                space is hand-built, unoptimized, and not for sale.
+              </p>
+              <div className="philosophy-tags">
+                <span>Anti-aesthetic</span>
+                <span>Privacy-first</span>
+                <span>Handmade</span>
+              </div>
+            </article>
+
+            <article className="philosophy-panel philosophy-panel-grid">
+              <h3>Project Goals</h3>
+              <ul>
+                <li>Own the stack. Host the code. Keep the logs.</li>
+                <li>Build tools that survive platform hostility.</li>
+                <li>Trade convenience for control — every time.</li>
+                <li>Document the rot, then weaponize it.</li>
+              </ul>
+            </article>
+
+            <article className="philosophy-panel philosophy-panel-terminal">
+              <h3>Guiding Constraints</h3>
+              <div className="terminal-strip">
+                <p><span className="terminal-prompt">&gt;</span> No corporate dependency chains</p>
+                <p><span className="terminal-prompt">&gt;</span> No silent telemetry</p>
+                <p><span className="terminal-prompt">&gt;</span> No friendly gloss</p>
+                <p><span className="terminal-prompt">&gt;</span> No fake minimalism</p>
+              </div>
+            </article>
+          </div>
+
+          <div className="philosophy-footer">
+            <div className="philosophy-signal">
+              <span className="signal-dot"></span>
+              <span>We are not building a product. We are building territory.</span>
+            </div>
+            <div className="philosophy-pulse">
+              <span>STATUS:</span>
+              <span className="pulse-text">LIVE / UNSTABLE / OWNED</span>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
