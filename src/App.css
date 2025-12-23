@@ -343,7 +343,6 @@
   background: rgba(23, 22, 22, 0.9);
   border: 2px solid var(--gray-weathered);
   box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.8);
-  clip-path: polygon(0 0, 98% 0, 100% 8%, 100% 100%, 2% 100%, 0 92%);
 }
 
 .philosophy-header {
