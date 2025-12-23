@@ -408,11 +408,12 @@ function App() {
             <span className="bracket">]</span>
           </div>
 
-          {showScrollPrompt && (
-            <div className="scroll-prompt" aria-hidden="true">
-              <div className="scroll-arrow"></div>
-            </div>
-          )}
+          <div
+            className={`scroll-prompt${showScrollPrompt ? ' is-visible' : ''}`}
+            aria-hidden="true"
+          >
+            <div className="scroll-arrow"></div>
+          </div>
         </div>
       </section>
 
