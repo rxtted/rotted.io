@@ -20,6 +20,8 @@ const STATUS_TEXTS: StatusTextConfig[] = [
   // Add more texts here - they'll automatically cycle
 ]
 
+const FINAL_INVITE_TEXT = 'Explore corporate independence.'
+
 // Helper function to normalize string|object entries
 function getTextConfig(config: StatusTextConfig) {
   return typeof config === 'string'
@@ -86,6 +88,7 @@ function App() {
   const [isDecoding, setIsDecoding] = useState(true)
   const [displayTokens, setDisplayTokens] = useState<Array<{text: string, isAnimating: boolean}>>([])
   const [useTokenDisplay, setUseTokenDisplay] = useState(false)
+  const [showScrollPrompt, setShowScrollPrompt] = useState(false)
   const timeoutsRef = useRef<NodeJS.Timeout[]>([])
   const currentIndexRef = useRef(0)
 
@@ -275,15 +278,22 @@ function App() {
             const fromConfig = getTextConfig(STATUS_TEXTS[currentIndex])
             const toConfig = getTextConfig(STATUS_TEXTS[nextIndex])
 
+            if (currentIndex === STATUS_TEXTS.length - 1) {
+              transitionToText(fromConfig.text, FINAL_INVITE_TEXT, false, () => {
+                currentIndexRef.current = 0
+                setShowScrollPrompt(true)
+                setUseTokenDisplay(false)
+                setDisplayText(FINAL_INVITE_TEXT)
+              })
+              return
+            }
+
             transitionToText(
               fromConfig.text,
               toConfig.text,
-              toConfig.useWordDiff || false,  // Read word-diff config from target text
+              toConfig.useWordDiff || false,
               () => {
-                // Update index for next cycle
                 currentIndexRef.current = nextIndex
-
-                // Schedule next transition
                 scheduleNextTransition()
               }
             )
@@ -293,6 +303,7 @@ function App() {
         }
 
         // Start the cycle
+        setShowScrollPrompt(false)
         scheduleNextTransition()
       }
     }, 50)
@@ -396,18 +407,27 @@ function App() {
             </span>
             <span className="bracket">]</span>
           </div>
+
+          {showScrollPrompt && (
+            <div className="scroll-prompt" aria-hidden="true">
+              <div className="scroll-arrow"></div>
+            </div>
+          )}
         </div>
       </section>
 
       <section className="philosophy-section" aria-labelledby="philosophy-title">
         <div className="philosophy-chassis">
           <header className="philosophy-header">
-            <p className="philosophy-kicker">SYSTEM MANIFEST</p>
             <h2 id="philosophy-title">Philosophy &amp; Goals</h2>
             <p className="philosophy-lede">
-              rotted.io is a refusal engine: a space for self-hosted autonomy, hostile to sanitization,
-              and built to survive corporate gravity.
+              rotted.io is a refusal engine: a space for self-hosted autonomy, hostile to monetization,
+              and designed to survive at every level.
             </p>
+            <p className="philosophy-lede">
+              This project's entire design may be uneasy to some, that is not by accident. Every single pixel is a carefully crafted reminder of how most minds have been reshaped to expect the boring corporate slop that has been shoved down their throats for the past 15 years.
+              
+            </p>          
           </header>
 
           <div className="philosophy-grid">

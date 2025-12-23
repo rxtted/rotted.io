@@ -995,6 +995,72 @@
   }
 }
 
+/* ===== SCROLL PROMPT ===== */
+.scroll-prompt {
+  margin-top: 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.scroll-arrow {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' shape-rendering='crispEdges'><polygon fill='%23DE3D17' points='16,28 4,16 12,16 12,4 20,4 20,16 28,16'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 48px 48px;
+  image-rendering: pixelated;
+  filter: drop-shadow(3px 3px 0 rgba(0, 0, 0, 0.65));
+  animation:
+    scroll-bounce 1.2s steps(6, end) infinite,
+    arrow-flicker 0.3s steps(2, end) infinite;
+}
+
+.scroll-arrow::after {
+  content: '';
+  position: absolute;
+  inset: -2px -6px;
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(12, 13, 12, 0.65) 50%, transparent 70%),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0px, rgba(0, 0, 0, 0.2) 1px, transparent 1px, transparent 3px);
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+  pointer-events: none;
+  animation: arrow-decay 0.5s steps(2, end) infinite;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes arrow-flicker {
+  0%, 100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes arrow-decay {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+}
+
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 1024px) {
